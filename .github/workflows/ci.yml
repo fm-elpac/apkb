@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
+      - run: deno fmt --check
+
+      # atool
+      - run: rustup target add aarch64-linux-android aarch64-unknown-linux-gnu
+      - run: cd atool && cargo fmt --check
+      - run: cd atool && cargo build
+      - run: cd atool && cargo test
+
+      # atool: x86_64-unknown-linux-gnu
+      - run: cd atool && cargo build --release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atool
+          path: atool/target/release/atool
+      # TODO atool: aarch64-unknown-linux-gnu
+
+      # atool: aarch64-linux-android
+      - run: make atool
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atool-android-aarch64
+          path: atool/target/aarch64-linux-android/release/atool
+
+      # TODO
+      # # apkb-ui.zip apkb-setup.azi.zip
+      # - run: make npm-setup apkb-setup-zip
+      # - uses: actions/upload-artifact@v4
+      #   with:
+      #     name: apkb-ui
+      #     path: ui-vue/dist
+      # - uses: actions/upload-artifact@v4
+      #   with:
+      #     name: apkb-setup.azi.zip
+      #     path: apkb-setup.azi.zip
+
+      # # apkb.apk
+      # - run: make apkb-apk
+      # - uses: actions/upload-artifact@v4
+      #   with:
+      #     name: apkb-debug.apk
+      #     path: apk/app/build/outputs/apk/debug/app-debug.apk
+
+  # TODO
+  # build-fdroid:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: registry.gitlab.com/fdroid/fdroidserver:buildserver
+  #   steps:
+  #     - uses: actions/checkout@v4

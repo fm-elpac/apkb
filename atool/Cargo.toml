@@ -1,0 +1,26 @@
+[package]
+name = "atool"
+version = "0.1.0-a1"
+edition = "2024"
+license = "GPL-3.0-or-later"
+
+authors = ["secext2022 <secext2022@outlook.com>"]
+description = "Little tool for Android apk (adb)"
+repository = "https://github.com/fm-elpac/apkb"
+keywords = ["android", "apk", "adb"]
+categories = ["command-line-utilities", "development-tools"]
+
+[dependencies]
+pm-bin = "^0.1.1"
+
+sha2 = "^0.10.9"
+base16ct = { version = "^0.2.0", features = ["alloc"] }
+reqwest = { version = "^0.12.22", default-features = false, features = ["http2", "rustls-tls-native-roots", "blocking", "system-proxy"] }
+adb_client = "^2.1.16"
+
+[build-dependencies]
+pm-bin = { version = "^0.1.1", features = ["build"] }
+
+[profile.release]
+strip = true
+lto = true
