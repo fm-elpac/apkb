@@ -20,27 +20,61 @@ jobs:
 
       - run: deno fmt --check
 
+      # setup rust
+      - run: |
+          rustup target add aarch64-linux-android \
+          aarch64-unknown-linux-gnu riscv64gc-unknown-linux-gnu
+      - run: |
+          sudo apt-get update && \
+          sudo apt-get -y install \
+          binutils-aarch64-linux-gnu gcc-aarch64-linux-gnu g++-aarch64-linux-gnu \
+          binutils-riscv64-linux-gnu gcc-riscv64-linux-gnu g++-riscv64-linux-gnu
       # atool
-      - run: rustup target add aarch64-linux-android aarch64-unknown-linux-gnu
       - run: cd atool && cargo fmt --check
       - run: cd atool && cargo build
       - run: cd atool && cargo test
 
       # atool: x86_64-unknown-linux-gnu
-      - run: cd atool && cargo build --release
+      - run: |
+          cd atool && \
+          cargo build --release
       - uses: actions/upload-artifact@v4
         with:
           name: atool
           path: atool/target/release/atool
-      # TODO atool: aarch64-unknown-linux-gnu
 
       # atool: aarch64-linux-android
       - run: make atool
-
       - uses: actions/upload-artifact@v4
         with:
           name: atool-android-aarch64
           path: atool/target/aarch64-linux-android/release/atool
+
+      # atool: aarch64-unknown-linux-gnu
+      - run: |
+          cd atool && \
+          cargo build --release --target aarch64-unknown-linux-gnu
+        env:
+          CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER: aarch64-linux-gnu-gcc
+          CC_aarch64_unknown_linux_gnu: aarch64-linux-gnu-gcc
+          CXX_aarch64_unknown_linux_gnu: aarch64-linux-gnu-g++
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atool-aarch64
+          path: atool/target/aarch64-unknown-linux-gnu/release/atool
+
+      # atool: riscv64gc-unknown-linux-gnu
+      - run: |
+          cd atool && \
+          cargo build --release --target riscv64gc-unknown-linux-gnu
+        env:
+          CARGO_TARGET_RISCV64GC_UNKNOWN_LINUX_GNU_LINKER: riscv64-linux-gnu-gcc
+          CC_riscv64gc_unknown_linux_gnu: riscv64-linux-gnu-gcc
+          CXX_riscv64gc_unknown_linux_gnu: riscv64-linux-gnu-g++
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atool-rv64gc
+          path: atool/target/riscv64gc-unknown-linux-gnu/release/atool
 
       # TODO
       # # apkb-ui.zip apkb-setup.azi.zip

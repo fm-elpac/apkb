@@ -111,7 +111,47 @@ atool --help
 env ADB_PATH=/usr/bin/true ./atool adb devices
 ```
 
-TODO
+## 编译 (本地 ArchLinux)
+
+- `x86_64-unknown-linux-gnu`
+
+  ```sh
+  cargo build --release
+  ```
+
+- `aarch64-linux-android`
+
+  ```sh
+  rustup target add aarch64-linux-android
+
+  export ANDROID_NDK_HOME=~/Android/Sdk/ndk/28.1.13356709
+  export ANDROID_NDK_ROOT=~/Android/Sdk/ndk/28.1.13356709
+  make atool
+  ```
+
+- `aarch64-unknown-linux-gnu`
+
+  ```sh
+  sudo pacman -S aarch64-linux-gnu-glibc
+  rustup target add aarch64-unknown-linux-gnu
+
+  export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-linux-gnu-gcc
+  export CC_aarch64_unknown_linux_gnu=aarch64-linux-gnu-gcc
+  export CXX_aarch64_unknown_linux_gnu=aarch64-linux-gnu-g++
+  cargo build --release --target aarch64-unknown-linux-gnu
+  ```
+
+- `riscv64gc-unknown-linux-gnu`
+
+  ```sh
+  sudo pacman -S riscv64-linux-gnu-glibc
+  rustup target add riscv64gc-unknown-linux-gnu
+
+  export CARGO_TARGET_RISCV64GC_UNKNOWN_LINUX_GNU_LINKER=riscv64-linux-gnu-gcc
+  export CC_riscv64gc_unknown_linux_gnu=riscv64-linux-gnu-gcc
+  export CXX_riscv64gc_unknown_linux_gnu=riscv64-linux-gnu-g++
+  cargo build --release --target riscv64gc-unknown-linux-gnu
+  ```
 
 ## LICENSE
 
