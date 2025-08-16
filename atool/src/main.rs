@@ -10,6 +10,7 @@ mod apk;
 mod cli;
 mod hash;
 mod http;
+mod sign_info;
 
 fn main() -> Result<(), ExitCode> {
     init_env_logger();

@@ -6,11 +6,19 @@ use std::{
     process::ExitCode,
 };
 
-use adb_client::{ADBDeviceExt, ADBServer, ADBServerDevice};
+use adb_client::{ADBDeviceExt, ADBServer, ADBServerDevice, DeviceShort};
+use serde::{Deserialize, Serialize};
+use serde_json::to_string_pretty;
 
 use crate::cli::bad_cli_arg;
 
 /// 命令 atool adb
+///
+/// 默认连接: `tcp:127.0.0.1:5037`
+///
+/// 支持环境变量:
+/// + `ADB_PATH` 指定 adb 命令 (二进制文件路径)
+/// + `ADB_SERVER_SOCKET` 指定 adb server 连接地址, 比如 `tcp:127.0.0.1:5037`
 pub fn c_adb(a: Vec<String>) -> Result<(), ExitCode> {
     // 解析命令行参数
     if a.len() < 1 {
@@ -36,8 +44,21 @@ const DEFAULT_SERVER_PORT: u16 = 5037;
 
 /// 获取 adb server
 fn adb_server() -> ADBServer {
+    // 默认地址
+    let addr1 = SocketAddrV4::new(DEFAULT_SERVER_IP, DEFAULT_SERVER_PORT);
+    // 环境变量
+    let addr = env::var("ADB_SERVER_SOCKET")
+        .map(|s| {
+            s.strip_prefix("tcp:")
+                .map(|x| x.parse().ok())
+                .flatten()
+                .unwrap_or_else(|| {
+                    eprintln!("ERROR: bad ADB_SERVER_SOCKET={}", s);
+                    addr1
+                })
+        })
+        .unwrap_or(addr1);
     // 修复 adb_client 无法禁止启动 adb 的问题
-    let addr = SocketAddrV4::new(DEFAULT_SERVER_IP, DEFAULT_SERVER_PORT);
     let adb_path = env::var("ADB_PATH").unwrap_or("adb".into());
 
     ADBServer::new_from_path(addr, Some(adb_path))
@@ -46,6 +67,22 @@ fn adb_server() -> ADBServer {
 /// 获取 adb device
 fn adb_device(server: &mut ADBServer) -> ADBServerDevice {
     server.get_device().unwrap()
+}
+
+/// adb 设备信息 (JSON)
+#[derive(Serialize, Deserialize)]
+struct DeviceInfo {
+    pub id: String,
+    pub state: String,
+}
+
+impl From<&DeviceShort> for DeviceInfo {
+    fn from(value: &DeviceShort) -> Self {
+        Self {
+            id: value.identifier.clone(),
+            state: format!("{}", value.state),
+        }
+    }
 }
 
 /// 命令 atool adb devices
@@ -59,8 +96,10 @@ fn c_adb_devices(a: Vec<String>) -> Result<(), ExitCode> {
     let mut server = adb_server();
     let d = server.devices().unwrap();
 
-    // TODO
-    println!("{:?}", d);
+    // JSON
+    let list: Vec<DeviceInfo> = d.iter().map(|i| i.into()).collect();
+    let o = to_string_pretty(&list).unwrap();
+    println!("{}", o);
 
     Ok(())
 }

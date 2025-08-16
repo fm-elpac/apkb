@@ -8,7 +8,9 @@ use sha2::{Digest, Sha256};
 
 use crate::cli::bad_cli_arg;
 
-/// 命令 atool sha256
+/// 命令 atool sha256 FILE OUTPUT
+///
+/// `-` 表示 stdout
 pub fn c_sha256(a: Vec<String>) -> Result<(), ExitCode> {
     // 解析命令行参数
     if a.len() != 2 {
@@ -37,8 +39,12 @@ pub fn c_sha256(a: Vec<String>) -> Result<(), ExitCode> {
     let h1 = h.finalize();
     let hh = base16ct::lower::encode_string(&h1);
 
-    let mut r = File::create(o).unwrap();
-    r.write_all(hh.as_bytes()).unwrap();
+    if "-" == o {
+        println!("{}", hh);
+    } else {
+        let mut r = File::create(o).unwrap();
+        r.write_all(hh.as_bytes()).unwrap();
+    }
 
     Ok(())
 }
