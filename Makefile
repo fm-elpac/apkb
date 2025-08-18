@@ -8,7 +8,7 @@ BIN_GRADLE := ./gradlew
 endif
 
 # fdroid build
-all: azi-aar atool npm-setup apkb-setup-zip apkb-apk
+all: azi-aar atool pnpm-setup apkb-setup-zip apkb-apk
 .PHONY: all
 
 # 构建: atool (aarch64-linux-android)
@@ -21,23 +21,25 @@ atool:
 	cargo build --target aarch64-linux-android --release
 .PHONY: atool
 
-# npm install
-npm-setup:
-	cd ui-vue && npm install
-.PHONY: npm-setup
+# pnpm install
+pnpm-setup:
+	cd ui-vue && pnpm install
+.PHONY: pnpm-setup
 
 # 构建: apbk-ui
 apkb-ui:
-	cd ui-vue && npm run build
+	cd ui-vue && pnpm build
 .PHONY: apkb-ui
 
 # 使用 zip 生成 apkb-setup.azi.zip
 apkb-setup-zip: apkb-ui
+	- rm -r apk/setup/ui
 	mkdir -p apk/setup/ui
-	cp ui-vue/dist/* apk/setup/ui
+	cp -r ui-vue/dist/* apk/setup/ui
 	cp atool/target/aarch64-linux-android/release/atool apk/setup
 
-	cd apk/setup && zip ../../apkb-setup.azi.zip *
+	- rm apkb-setup.azi.zip
+	cd apk/setup && zip -r ../../apkb-setup.azi.zip *
 	mkdir -p apk/app/src/main/assets
 	cp apkb-setup.azi.zip apk/app/src/main/assets/
 .PHONY: apkb-setup-zip

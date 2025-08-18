@@ -76,24 +76,32 @@ jobs:
           name: atool-rv64gc
           path: atool/target/riscv64gc-unknown-linux-gnu/release/atool
 
-      # TODO
-      # # apkb-ui.zip apkb-setup.azi.zip
-      # - run: make npm-setup apkb-setup-zip
-      # - uses: actions/upload-artifact@v4
-      #   with:
-      #     name: apkb-ui
-      #     path: ui-vue/dist
-      # - uses: actions/upload-artifact@v4
-      #   with:
-      #     name: apkb-setup.azi.zip
-      #     path: apkb-setup.azi.zip
+      # pnpm
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
 
-      # # apkb.apk
-      # - run: make apkb-apk
-      # - uses: actions/upload-artifact@v4
-      #   with:
-      #     name: apkb-debug.apk
-      #     path: apk/app/build/outputs/apk/debug/app-debug.apk
+      # apkb-ui.zip apkb-setup.azi.zip
+      - run: make pnpm-setup apkb-setup-zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: apkb-ui
+          path: ui-vue/dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: apkb-setup.azi.zip
+          path: apkb-setup.azi.zip
+
+      # 下载 azi.aar
+      - run: mkdir -p apk/app/libs
+      - run: curl -L -o apk/app/libs/azi.aar https://github.com/fm-elpac/azi/releases/download/v0.1.0/azi.aar
+
+      # apkb.apk
+      - run: make apkb-apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: apkb-debug.apk
+          path: apk/app/build/outputs/apk/debug/app-debug.apk
 
   # TODO
   # build-fdroid:
