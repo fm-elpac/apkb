@@ -1,9 +1,9 @@
-<!--
+<!-- 本机 页面
 
 -->
 
 <template>
-  <div class="page-home">
+  <div class="page-host">
     TODO
   </div>
 </template>

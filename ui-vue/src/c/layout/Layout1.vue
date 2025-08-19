@@ -24,6 +24,8 @@
 import { computed, provide, ref } from "vue";
 import { RouterView, useRoute } from "vue-router";
 
+import { useT } from "@/i18n/index";
+
 import Sidebar from "./Sidebar.vue";
 
 const route = useRoute();
@@ -31,7 +33,9 @@ const route = useRoute();
 const showSidebar = ref(null);
 provide("showSidebar", showSidebar);
 
-const title = computed(() => route.meta.title);
+const t = useT();
+
+const title = computed(() => t.value.title[route.meta.title]);
 
 function toggleSidebar() {
   showSidebar.value = !showSidebar.value;

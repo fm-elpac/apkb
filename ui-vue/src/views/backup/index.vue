@@ -1,9 +1,9 @@
-<!-- 关于 页面
+<!-- 备份 页面
 
 -->
 
 <template>
-  <div class="page-about">
+  <div class="page-backup">
     TODO
   </div>
 </template>

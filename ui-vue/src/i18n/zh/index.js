@@ -1,3 +1,6 @@
 // zh_CN
+import title from "./title";
 
-// TODO
+export default {
+  title,
+};

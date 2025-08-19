@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+  width="512"
+  height="512"
+  viewBox="0 0 512 512"
+  version="1.1"
+  id="svg1"
+  inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+  sodipodi:docname="apkb-logo-1.svg"
+  inkscape:export-filename="apkb-logo-1.png"
+  inkscape:export-xdpi="96"
+  inkscape:export-ydpi="96"
+  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:svg="http://www.w3.org/2000/svg"
+>
+  <sodipodi:namedview
+    id="namedview1"
+    pagecolor="#ffffff"
+    bordercolor="#000000"
+    borderopacity="0.25"
+    inkscape:showpageshadow="2"
+    inkscape:pageopacity="0.0"
+    inkscape:pagecheckerboard="0"
+    inkscape:deskcolor="#d1d1d1"
+    inkscape:document-units="px"
+    inkscape:zoom="3.5722656"
+    inkscape:cx="255.86003"
+    inkscape:cy="256"
+    inkscape:window-width="3840"
+    inkscape:window-height="2082"
+    inkscape:window-x="0"
+    inkscape:window-y="0"
+    inkscape:window-maximized="1"
+    inkscape:current-layer="layer2"
+  />
+  <defs
+    id="defs1"
+  />
+  <g
+    inkscape:label="bg"
+    inkscape:groupmode="layer"
+    id="layer1"
+    sodipodi:insensitive="true"
+    style="display: inline"
+  >
+    <rect
+      style="fill: #9ccc65; fill-opacity: 1"
+      id="rect1"
+      width="416"
+      height="416"
+      x="48"
+      y="48"
+      rx="32"
+      ry="32"
+    />
+  </g>
+  <g
+    inkscape:groupmode="layer"
+    id="layer2"
+    inkscape:label="shell"
+    sodipodi:insensitive="true"
+  >
+    <path
+      style="fill: none; fill-opacity: 1; stroke: #f1f8e9; stroke-width: 14; stroke-linecap: round; stroke-dasharray: none; stroke-opacity: 1"
+      d="m 80,270 c -9.862502,-70.48666 7.043581,-124.6273 40,-150 32.95642,-25.372704 65.58944,-14.2887 100,-20 34.41056,-5.711297 33.0712,-22.874697 70,-20 24.8484,1.934306 39.12677,29.62441 60,40 20.87323,10.37559 56.05643,7.07313 70,30 13.94357,22.92687 -11.98166,51.55944 -10,80 1.98166,28.44056 10.27198,63.73583 0,90 -10.27198,26.26417 -45.04788,59.92128 -100,70"
+      id="path5"
+      sodipodi:nodetypes="czzszzzzc"
+    />
+  </g>
+  <g
+    inkscape:groupmode="layer"
+    id="layer3"
+    inkscape:label="android"
+    sodipodi:insensitive="true"
+  >
+    <g
+      id="g4"
+      transform="rotate(30.741659,101.15163,407.31383)"
+      sodipodi:insensitive="true"
+    >
+      <circle
+        style="fill: #f1f8e9; fill-opacity: 1; stroke: none; stroke-width: 8; stroke-dasharray: none; stroke-opacity: 1"
+        id="path2"
+        cx="152"
+        cy="152"
+        r="52"
+      />
+      <rect
+        style="fill: #f1f8e9; fill-opacity: 1; stroke: none; stroke-width: 7.3573; stroke-dasharray: none; stroke-opacity: 1"
+        id="rect2"
+        width="104"
+        height="60"
+        x="100"
+        y="152"
+      />
+      <circle
+        style="fill: #9ccc65; fill-opacity: 1; stroke: none; stroke-width: 4; stroke-dasharray: none; stroke-opacity: 1"
+        id="path3-3"
+        cx="178"
+        cy="136"
+        r="6"
+      />
+      <circle
+        style="fill: #9ccc65; fill-opacity: 1; stroke: none; stroke-width: 4; stroke-dasharray: none; stroke-opacity: 1"
+        id="path3"
+        cx="126"
+        cy="136"
+        r="6"
+      />
+      <path
+        style="fill: none; fill-opacity: 1; stroke: #f1f8e9; stroke-width: 12; stroke-linecap: round; stroke-dasharray: none; stroke-opacity: 1"
+        d="m 100,90 30,32"
+        id="path4"
+        sodipodi:nodetypes="cc"
+      />
+      <path
+        style="fill: none; fill-opacity: 1; stroke: #f1f8e9; stroke-width: 12; stroke-linecap: round; stroke-dasharray: none; stroke-opacity: 1"
+        d="m 204,90 -30,32"
+        id="path4-1"
+        sodipodi:nodetypes="cc"
+      />
+    </g>
+  </g>
+  <g
+    inkscape:groupmode="layer"
+    id="layer4"
+    inkscape:label="pearl"
+    style="display: inline"
+    sodipodi:insensitive="true"
+  >
+    <circle
+      style="fill: #f1f8e9; fill-opacity: 1; stroke: #9ccc65; stroke-width: 8; stroke-dasharray: none; stroke-opacity: 1"
+      id="path1"
+      cx="208"
+      cy="306"
+      r="104"
+    />
+  </g>
+</svg>

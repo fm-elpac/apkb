@@ -1,5 +1,11 @@
 #!/system/bin/sh
 # ${AZI_DIR_SDCARD_DATA}/apkb-setup/azi_init.sh
 
+FROM=${AZI_DIR_SDCARD_DATA}/apkb-setup
+TO=${AZI_DIR_APP_DATA}
+
 # atool
-cp ${AZI_DIR_SDCARD_DATA}/apkb-setup/atool ${AZI_DIR_APP_DATA}
+cp ${FROM}/atool $TO
+
+# static-web-server
+cp ${FROM}/static-web-server-v2.38.0-aarch64-linux-android/static-web-server $TO

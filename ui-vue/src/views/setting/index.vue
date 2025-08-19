@@ -1,9 +1,9 @@
-<!-- 关于 页面
+<!-- 设置 页面
 
 -->
 
 <template>
-  <div class="page-about">
+  <div class="page-setting">
     TODO
   </div>
 </template>

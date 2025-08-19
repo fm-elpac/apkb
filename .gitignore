@@ -1,7 +1,9 @@
 /tmp
 
+/apk/app/src/main/assets
 /apk/app/libs
-/apk/setup/ui
-/apk/setup/atool
+
+/apk/setup
+!/apk/setup/azi_init.sh
 
 *.azi.zip

@@ -1,9 +1,9 @@
-<!-- 关于 页面
+<!-- 应用 页面
 
 -->
 
 <template>
-  <div class="page-about">
+  <div class="page-app">
     TODO
   </div>
 </template>

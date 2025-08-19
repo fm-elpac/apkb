@@ -10,7 +10,7 @@ import io.github.fm_elpac.azi.Azi
 import io.github.fm_elpac.azi.AziCb
 import io.github.fm_elpac.azi.AziWebView
 
-class MainActivity : Activity() {
+class MainActivity: Activity() {
     var aw: AziWebView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,9 +23,8 @@ class MainActivity : Activity() {
         // status bar color (black)
         window.statusBarColor = 0xff000000.toInt()
 
-        // TODO
-        // 添加自定义 js api
-        //w.addJsApi("demo", DemoApi(this))
+        // 添加 js api
+        w.addJsApi("apkb_api", ApkbApi(this))
         w.addJsApi("azi_api", LoaderApi())
         // 显示 ui-loader
         w.loadLoader()
@@ -38,6 +37,10 @@ class MainActivity : Activity() {
             }
         }
         Azi.initZip("apkb-setup.azi.zip", "apkb-setup", cb)
+
+        // DEBUG
+        Azi.log("DEBUG: locale = " + getDeviceLocale())
+        Azi.log("DEBUG: android api level = " + getDeviceApiLevel())
     }
 }
 

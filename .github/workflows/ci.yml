@@ -81,6 +81,14 @@ jobs:
         with:
           version: 10
 
+      # static-web-server
+      - run: curl -L -o static-web-server-aarch64-linux-android.tar.gz https://github.com/static-web-server/static-web-server/releases/download/v2.38.0/static-web-server-v2.38.0-aarch64-linux-android.tar.gz
+      - run: tar -xvf static-web-server-aarch64-linux-android.tar.gz
+      - run: mkdir -p apk/setup/
+      - run: cp -r static-web-server-v2.38.0-aarch64-linux-android apk/setup/
+      # https://github.com/static-web-server/static-web-server/releases/download/v2.38.0/static-web-server-v2.38.0-aarch64-unknown-linux-gnu.tar.gz
+      # https://github.com/static-web-server/static-web-server/releases/download/v2.38.0/static-web-server-v2.38.0-x86_64-unknown-linux-gnu.tar.gz
+
       # apkb-ui.zip apkb-setup.azi.zip
       - run: make pnpm-setup apkb-setup-zip
       - uses: actions/upload-artifact@v4
@@ -93,7 +101,7 @@ jobs:
           path: apkb-setup.azi.zip
 
       # 下载 azi.aar
-      - run: mkdir -p apk/app/libs
+      - run: mkdir -p apk/app/libs/
       - run: curl -L -o apk/app/libs/azi.aar https://github.com/fm-elpac/azi/releases/download/v0.1.0/azi.aar
 
       # apkb.apk

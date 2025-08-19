@@ -1,9 +1,9 @@
-<!-- 关于 页面
+<!-- 分享 页面
 
 -->
 
 <template>
-  <div class="page-about">
+  <div class="page-share">
     TODO
   </div>
 </template>

@@ -33,15 +33,20 @@ apkb-ui:
 
 # 使用 zip 生成 apkb-setup.azi.zip
 apkb-setup-zip: apkb-ui
-	- rm -r apk/setup/ui
-	mkdir -p apk/setup/ui
-	cp -r ui-vue/dist/* apk/setup/ui
-	cp atool/target/aarch64-linux-android/release/atool apk/setup
+	- rm -r apk/setup/ui/
+	mkdir -p apk/setup/ui/
+	cp -r ui-vue/dist/* apk/setup/ui/
+	cp atool/target/aarch64-linux-android/release/atool apk/setup/
+	cp LICENSE apk/setup/
+	cp README.md apk/setup/
 
 	- rm apkb-setup.azi.zip
 	cd apk/setup && zip -r ../../apkb-setup.azi.zip *
-	mkdir -p apk/app/src/main/assets
+
+	mkdir -p apk/app/src/main/assets/
 	cp apkb-setup.azi.zip apk/app/src/main/assets/
+	cp LICENSE apk/app/src/main/assets/
+	cp README.md apk/app/src/main/assets/
 .PHONY: apkb-setup-zip
 
 # 构建: apkb.apk

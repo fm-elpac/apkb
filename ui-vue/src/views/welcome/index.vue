@@ -1,10 +1,10 @@
-<!-- 关于 页面
+<!-- 欢迎 页面
 
 -->
 
 <template>
-  <div class="page-about">
-    TODO
+  <div class="page-welcome">
+    TODO welcome
   </div>
 </template>
 

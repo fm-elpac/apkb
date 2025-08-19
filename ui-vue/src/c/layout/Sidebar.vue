@@ -15,18 +15,50 @@
 </template>
 
 <script setup>
-import { inject, ref } from "vue";
+import { computed, inject } from "vue";
 import { useRouter } from "vue-router";
 
 const showSidebar = inject("showSidebar");
 
+import { useT } from "@/i18n/index";
+
+const t = useT();
+
 // 导航菜单
-const list = ref([
-  {
-    title: "App",
-    value: "/ui/home",
-  },
-]);
+const list = computed(() => {
+  const i = t.value.title;
+
+  return [
+    {
+      title: i.welcome,
+      value: "/ui/welcome",
+    },
+    {
+      title: i.app,
+      value: "/ui/app",
+    },
+    {
+      title: i.backup,
+      value: "/ui/backup",
+    },
+    {
+      title: i.host,
+      value: "/ui/host",
+    },
+    {
+      title: i.share,
+      value: "/ui/share",
+    },
+    {
+      title: i.setting,
+      value: "/ui/setting",
+    },
+    {
+      title: i.about,
+      value: "/ui/about",
+    },
+  ];
+});
 
 const router = useRouter();
 
