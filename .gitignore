@@ -3,7 +3,7 @@
 /apk/app/src/main/assets
 /apk/app/libs
 
-/apk/setup
-!/apk/setup/azi_init.sh
+/apk/setup/*
+!/apk/setup/*.sh
 
 *.azi.zip

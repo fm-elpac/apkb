@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
-import Layout1 from "@/c/layout/Layout1.vue";
+import LayoutR1 from "@/c/layout/LayoutR1.vue";
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -11,7 +11,7 @@ const router = createRouter({
     },
     {
       path: "/ui",
-      component: Layout1,
+      component: LayoutR1,
       children: [
         {
           path: "/ui/welcome",

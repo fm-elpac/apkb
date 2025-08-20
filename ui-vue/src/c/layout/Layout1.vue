@@ -15,14 +15,14 @@
     <Sidebar />
 
     <v-main>
-      <RouterView />
+      <slot />
     </v-main>
   </v-layout>
 </template>
 
 <script setup>
 import { computed, provide, ref } from "vue";
-import { RouterView, useRoute } from "vue-router";
+import { useRoute } from "vue-router";
 
 import { useT } from "@/i18n/index";
 

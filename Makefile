@@ -1,10 +1,13 @@
 # build apkb (for fdroid)
 
 # (fdroid) set gradlew
+# (fdroid) use npm
 ifeq ($(BUILD),fdroid)
 BIN_GRADLE := gradle
+BIN_PNPM := npm
 else
 BIN_GRADLE := ./gradlew
+BIN_PNPM := pnpm
 endif
 
 # fdroid build
@@ -23,12 +26,12 @@ atool:
 
 # pnpm install
 pnpm-setup:
-	cd ui-vue && pnpm install
+	cd ui-vue && $(BIN_PNPM) install
 .PHONY: pnpm-setup
 
 # 构建: apbk-ui
 apkb-ui:
-	cd ui-vue && pnpm build
+	cd ui-vue && $(BIN_PNPM) run build
 .PHONY: apkb-ui
 
 # 使用 zip 生成 apkb-setup.azi.zip

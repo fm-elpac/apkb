@@ -6,7 +6,7 @@ export function api() {
 }
 
 // 返回当前运行的平台: "android" | "pc"
-export function get_platfrom() {
+export function get_platform() {
   return api()?.get_platform();
 }
 
