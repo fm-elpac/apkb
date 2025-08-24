@@ -3,11 +3,11 @@
   <!-- `deno fmt` ignore this -->
   <style
     name="Theme.ApkBackup"
-    parent="android:Theme.Material.Light.NoActionBar"
+    parent="Theme.AppCompat.Light.NoActionBar"
   >
     <item name="android:statusBarColor">@color/black</item>
 
-    <!-- TODO
+    <!--
       https://dev.to/lejdi/handling-android-toolbars-in-android-15-1od
       not work on Android >= 16
     -->

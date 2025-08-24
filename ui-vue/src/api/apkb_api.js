@@ -20,4 +20,17 @@ export function get_android_api_level() {
   return api()?.get_android_api_level();
 }
 
+// 获取本机安装的 apk 列表: 启动后台线程
+export function pm_get_apk_list_start() {
+  api()?.pm_get_apk_list_start();
+}
+
+// 获取本机安装的 apk 列表: 获取结果
+export function pm_get_apk_list() {
+  const r = api()?.pm_get_apk_list();
+  if (null != r) {
+    return JSON.parse(r);
+  }
+}
+
 // TODO

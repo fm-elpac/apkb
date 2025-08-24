@@ -1,16 +1,20 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
     namespace = "io.github.fm_elpac.apkb"
-    compileSdk = 36
+    // Android 15 (api level 35)
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "io.github.fm_elpac.apkb"
+
         minSdk = 27
-        targetSdk = 36
+        // Android 15 (api level 35)
+        targetSdk = 35
 
         versionCode = 1
         versionName = "0.1.0-a1"
@@ -44,7 +48,9 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.appcompat)
 
+    implementation(libs.kotlinx.serialization.json)
     implementation(files("libs/azi.aar"))
 
     testImplementation(libs.junit)

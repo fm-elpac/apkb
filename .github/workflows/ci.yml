@@ -102,7 +102,7 @@ jobs:
 
       # 下载 azi.aar
       - run: mkdir -p apk/app/libs/
-      - run: curl -L -o apk/app/libs/azi.aar https://github.com/fm-elpac/azi/releases/download/v0.1.0/azi.aar
+      - run: curl -L -o apk/app/libs/azi.aar https://github.com/fm-elpac/azi/releases/download/v0.1.1/azi.aar
 
       # apkb.apk
       - run: make apkb-apk

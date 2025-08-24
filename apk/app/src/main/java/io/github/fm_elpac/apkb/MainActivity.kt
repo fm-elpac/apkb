@@ -1,17 +1,18 @@
 package io.github.fm_elpac.apkb
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.WindowManager
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.webkit.JavascriptInterface
 
+import androidx.appcompat.app.AppCompatActivity
+
 import io.github.fm_elpac.azi.Azi
 import io.github.fm_elpac.azi.AziCb
 import io.github.fm_elpac.azi.AziWebView
 
-class MainActivity: Activity() {
+class MainActivity: AppCompatActivity() {
     var aw: AziWebView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
