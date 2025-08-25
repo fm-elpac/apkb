@@ -15,6 +15,8 @@ phalangioides) 软件
 
 镜像 (mirror):
 
+- <https://bitbucket.org/fm-elpac/apkb/>
+
 TODO
 
 ## LICENSE

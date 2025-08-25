@@ -62,3 +62,10 @@ apkb-apk:
 azi-aar:
 	echo TODO
 .PHONY: azi-aar
+
+# 本地调试: azi 重新初始化
+debug-install-init:
+	adb install apk/app/build/outputs/apk/debug/app-debug.apk
+	- adb shell rm /sdcard/Android/data/io.github.fm_elpac.apkb/cache/apkb-setup.azi.zip
+	- adb shell rm -r /sdcard/Android/data/io.github.fm_elpac.apkb/files/apkb-setup
+	- adb shell rm /sdcard/Android/data/io.github.fm_elpac.apkb/files/azi/azi_ok

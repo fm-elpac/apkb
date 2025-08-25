@@ -12,6 +12,10 @@ import io.github.fm_elpac.azi.Azi
 import io.github.fm_elpac.azi.AziCb
 import io.github.fm_elpac.azi.AziWebView
 
+import io.github.fm_elpac.apkb.api.ApkbApi
+import io.github.fm_elpac.apkb.api.getDeviceLocale
+import io.github.fm_elpac.apkb.api.getDeviceApiLevel
+
 class MainActivity: AppCompatActivity() {
     var aw: AziWebView? = null
 
