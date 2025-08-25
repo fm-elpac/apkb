@@ -74,20 +74,6 @@ export const useAppStore = defineStore("app", () => {
         setTimeout(checkResult, 500);
       }
     }
-    // DEBUG
-    host.value = [
-      {
-        "id": "com.xiaomi.scanner",
-        "versionCode": 1322032440,
-        "versionName": "15.9.23",
-        "label": "AI扫描",
-        "icon":
-          "/storage/emulated/0/Android/data/io.github.fm_elpac.apkb/cache/icon/com.xiaomi.scanner.png",
-        "minSdk": 24,
-        "apk":
-          "/data/app/~~Rih9hQ_iG3CKj-sN3QNpqA==/com.xiaomi.scanner-RJq-23DrrBIZaNi9WDbuxQ==/base.apk",
-      },
-    ];
   }
 
   // 开始加载 host_list (后台新线程异步进行)

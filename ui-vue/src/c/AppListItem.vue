@@ -102,4 +102,8 @@ function toggleShowPath() {
 .path {
   word-break: break-all;
 }
+
+.v-list-item-subtitle {
+  -webkit-line-clamp: none !important;
+}
 </style>
